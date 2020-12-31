@@ -1,12 +1,11 @@
 import requests
 from bs4 import BeautifulSoup
 
-
+#declare URL
 url = "https://infosecindustry.com/news/"
 r = requests.get(url)
 
 yelp_soup = BeautifulSoup(r.text, 'html.parser')
-count = 0
 
 links = yelp_soup.findAll('div', {'class': 'item-details'})
 
@@ -20,6 +19,8 @@ for stuff in links:
     print(title)
     print(a_tag['href'])
     print('\n')
+    
+    #Display only 5 articles
     count = count + 1
     if count == 5:
         break
